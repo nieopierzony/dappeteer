@@ -10,9 +10,9 @@ export const sign = (page: Page, getSingedIn: GetSingedIn, version?: string) => 
   }
   await page.reload();
 
-  const button = await Promise.race([
-    page.waitForSelector('.request-signature__footer__sign-button'),
-    page.waitForSelector('.signature-request-footer button:last-child'),
-  ]);
+  const button = await page.waitForSelector('button.btn-primary');
   await button.click();
+
+  const secondBtn = await page.waitForSelector('button.btn-primary');
+  await secondBtn.click();
 };
